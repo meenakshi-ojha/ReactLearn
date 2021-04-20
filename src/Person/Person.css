@@ -1,4 +1,4 @@
-/* .Person {
+.Person {
     width: 60%;
     margin: 20px auto;
     border: 1px solid #eee;
@@ -7,7 +7,20 @@
     text-align: center;
 
 }
+
 @media (min-width:500px){
     .Person
     {width: '450px'}
-} */
+}
+
+.Button
+{background-color:cornflowerblue;
+color:white;
+font:inherit;
+border:1px solid blue;
+padding:8px;
+cursor:pointer;}
+Button:hover{
+    background-color:lightskyblue;
+    color:black;
+  }
