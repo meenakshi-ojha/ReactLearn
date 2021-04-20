@@ -1,7 +1,21 @@
 import React, { Component } from 'react';
 import Person from './Person/Person';
 import './App.css';
+//import Radium ,{ StyleRoot }from 'radium';
+import styled from 'styled-components';
 
+const StyledButton =styled.button`
+background-color:${props =>props.alt ? 'maroon' :'green'};
+color:white;
+font:inherit;
+border:1px solid blue;
+padding:8px;
+cursor:pointer;
+
+&:hover{
+  background-color:${props =>props.alt ? 'salmon' :'lightgreen'};
+  color:black;
+}`;
 
 
 class App extends Component {
@@ -62,14 +76,19 @@ class App extends Component {
 
     }
   render() {
-    const style={
-      backgroundColor:'white',
-      font:'inherit',
-      border:'1px solid blue',
-      padding:'8px',
-      cursor:'pointer'
+    // const style={
+    //   backgroundColor:'green',
+    //   color:'white',
+    //   font:'inherit',
+    //   border:'1px solid blue',
+    //   padding:'8px',
+    //   cursor:'pointer',
+    //   ':hover':{
+    //     backgroundColor:'Lightgreen',
+    //     color:'black'
+    //   }
     
-    }
+    // }
     let persons=null;
     if(this.state.showPersons){
       persons=(
@@ -82,38 +101,53 @@ class App extends Component {
                 age={person.age}
                 key={person.id}
                 changed={((event)=>this.nameChangedHandler(event,person.id))}/>
-            })}
-        {/* <Person 
-      name = {this.state.persons[0].name} 
-      age={this.state.persons[0].age}/>
-      <Person 
-      name = {this.state.persons[1].name} 
-      age={this.state.persons[1].age}
-      changed={this.nameChangedHandler}/>
-      <Person 
-      name = {this.state.persons[2].name} 
-      age={this.state.persons[2].age} 
-      click={this.switchNameHandler.bind(this,'new name meeankshi ojha when para clicked')}> 
-        hobby:writing </Person>
-      <Person name = ' Meenak' age=' 28'/> */}
-      </div>
+            })
+            }
+            {/* <Person 
+          name = {this.state.persons[0].name} 
+          age={this.state.persons[0].age}/>
+          <Person 
+          name = {this.state.persons[1].name} 
+          age={this.state.persons[1].age}
+          changed={this.nameChangedHandler}/>
+          <Person 
+          name = {this.state.persons[2].name} 
+          age={this.state.persons[2].age} 
+          click={this.switchNameHandler.bind(this,'new name meeankshi ojha when para clicked')}> 
+            hobby:writing </Person>
+          <Person name = ' Meenak' age=' 28'/> */}
+        </div>
       );
+      // style.backgroundColor='maroon';
+      // style[':hover']={
+      //   backgroundColor:'pink',
+      //   color:'black'
+      // };
     }
-    return (
+    let classes=[];
+    if(this.state.persons.length<=2){
+      classes.push('red');
+    }
+    if(this.state.persons.length<=1){
+      classes.push('bold');
+    }
+    return (//<StyleRoot>
       <div className="App">
-       <h1>react</h1>
+       <h1>React</h1>
+       <p className={classes.join(' ')}>This is a React Application</p>
        {/* <button 
        style={style}
        onClick={()=>this.switchNameHandler('New Meenakshi Ojha when clicked by button')}>Switch name</button> */}
-       <button
-        style={style}
+       <StyledButton
+       alt={this.state.showPersons}
         onClick={this.togglePersonsHandler}>
           toggle persons 
-       </button>
+       </StyledButton>
         
          {persons}
        
       </div>
+      //</StyleRoot>
     );
   }
 }
