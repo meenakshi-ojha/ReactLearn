@@ -35,8 +35,14 @@ const person = (props)=>{
     //     }
 
     // };
+    const rnd =Math.random();
+        if(rnd>0.9)
+        {
+            throw new Error('Something went wrong');
+        }
     return(
         //<div className="Person" style={style}> 
+        
         <div className={classes.Person}>
             <p>I'm {props.name } and I am {props.age} years old </p>
            <button onClick={props.click} className={classes.Button}>delete this person</button>
