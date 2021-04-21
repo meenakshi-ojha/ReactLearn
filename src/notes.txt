@@ -1,0 +1,100 @@
+//import ErrorBoundary from './ErrorBoundary/ErrorBoundary';
+//import Radium ,{ StyleRoot }from 'radium';
+//import styled from 'styled-components';
+
+// const StyledButton =styled.button`
+// background-color:${props =>props.alt ? 'maroon' :'green'};
+// color:white;
+// font:inherit;
+// border:1px solid blue;
+// padding:8px;
+// cursor:pointer;
+
+// &:hover{
+//   background-color:${props =>props.alt ? 'salmon' :'lightgreen'};
+//   color:black;
+// }`;
+
+//  switchNameHandler=(newName)=>
+  //  {
+  //    //console.log('wasclickcc');
+  //    ////this.state.persons[0].name='MEENAKSHI OJHA';
+  //    this.setState({persons:[
+  //     {
+  //       name:newName, age:23
+  //     },
+  //     {
+  //      name:'New MandavI ojha', age:31
+  //    },
+  //    {
+  //      name:'Maxime Vachire Lagrave', age:3
+  //    }
+
+  //   ]})
+  //  }
+
+  //radium
+  // const style={
+    //   backgroundColor:'green',
+    //   color:'white',
+    //   font:'inherit',
+    //   border:'1px solid blue',
+    //   padding:'8px',
+    //   cursor:'pointer',
+    //   ':hover':{
+    //     backgroundColor:'Lightgreen',
+    //     color:'black'
+    //   }
+    
+    // }
+    // style.backgroundColor='maroon';
+      // style[':hover']={
+      //   backgroundColor:'pink',
+      //   color:'black'
+      // };
+      //<StyleRoot>
+      //</StyleRoot>
+
+      ///person.js
+      //import Radium from 'radium';
+//import styled from 'styled-components';
+//             const StyledDiv= styled.div`
+//             width: 60%;
+//             margin: 20px auto;
+//             border: 1px solid #eee;
+//             box-shadow: 0px 2px 3px #ccc;
+//             padding: 16px;
+//             text-align: center;
+
+//             @media (min-width:500px){
+
+//             width: '450px'
+//             }`
+// ;
+// const style={
+    //     '@media (min-width:500px)':{
+    //         width: '450px'
+    //     }
+    // };
+    // const buttonStyle={
+    //     backgroundColor:'gray',
+    //     color:'white',
+    //     font:'inherit',
+    //     border:'1px solid blue',
+    //     padding:'8px',
+    //     cursor:'pointer',
+    //     ':hover':{
+    //       backgroundColor:'lightblue',
+    //       color:'black'
+    //     }
+
+    // };
+    // const rnd =Math.random();
+    //     if(rnd>0.9)
+    //     {
+    //         throw new Error('Something went wrong');
+    //     }
+
+    /* <button 
+        style={style}
+        onClick={()=>this.switchNameHandler('New Meenakshi Ojha when clicked by button')}>Switch name</button> */}
