@@ -5,6 +5,14 @@ import Cockpit from '../components/Cockpit/Cockpit';
 
 
 class App extends Component {
+  //Lifecycle creation step 1 create constructor
+  constructor(props)
+  {
+    super(props);
+    console.log('[App.js] constructor');
+    //can also assign state in constructor using this.state=....
+  }
+  //more modern way of assigning state
   state ={
      persons:[
        {
@@ -19,6 +27,31 @@ class App extends Component {
      ],
      showPersons:false
    }
+   //Lifecycle Hook 2
+   static getDerivedStateFromProps(props,state)
+   {
+     console.log('[App.js] getDerivedStateFromProps',props);
+     return state;
+   }
+   componentDidMount()
+   {
+     console.log('[App.js] ComponentDidMount');
+   }
+
+   shouldComponentUpdate(nextProps,nextState){
+    console.log('[App.js] should component update');
+    return true;
+  }
+  getSnapshotBeforeUpdate(prevprop,prevState)
+  {
+    console.log('[app.js]getSnapshotBeforeUpdate');
+    return {message:'app Snapshot!'};
+  }
+  componentDidUpdate(prevprop,prevState,snapshot)
+  {
+    console.log('[App.js] ComponentDIDupdate');
+    console.log(snapshot);
+  }
   nameChangedHandler=(event,id)=>
   {
     const personIndex=this.state.persons.findIndex(
@@ -54,7 +87,7 @@ class App extends Component {
       persons.splice(personIndex,1);
       this.setState({persons:persons});}
   render() {
-    
+    console.log('[App.js] render');  
     let persons=null;
     
     if(this.state.showPersons){
@@ -76,6 +109,7 @@ class App extends Component {
       <div className={classes.App}>
       
         <Cockpit 
+        title={this.props.title}
         showPersons={this.state.showPersons}
         persons={this.state.persons}
         clicked={this.togglePersonsHandler}/>
