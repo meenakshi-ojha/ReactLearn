@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import classes from './App.css';
 import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
+import AuthContext from '../context/auth-context';
 
 
 class App extends Component {
@@ -25,7 +26,9 @@ class App extends Component {
         id:'3', name:'max ruth', age:3
       }
      ],
-     showPersons:false
+     showPersons:false,
+     showCockpit:true,
+     authentication:false
    }
    //Lifecycle Hook 2
    static getDerivedStateFromProps(props,state)
@@ -86,6 +89,10 @@ class App extends Component {
       const persons=[...this.state.persons];
       persons.splice(personIndex,1);
       this.setState({persons:persons});}
+      loginHandler=()=>
+      {
+        this.setState({authentication:true});
+      }
   render() {
     console.log('[App.js] render');  
     let persons=null;
@@ -98,6 +105,7 @@ class App extends Component {
           clicked={this.deletePersonHandler}
           namechanged={this.nameChangedHandler}
           agechanged={this.ageChangedHandler}
+          isAuthenticated={this.state.authentication}
           />
         
       );
@@ -107,15 +115,19 @@ class App extends Component {
     
     return (
       <div className={classes.App}>
-      
+      <button onClick={()=>{this.setState({showCockpit:false})}}>Remove Cockpit</button>
+      <AuthContext.Provider value={{authenticate:this.state.authentication,
+      login:this.loginHandler}}>
+        {this.state.showCockpit?
         <Cockpit 
         title={this.props.title}
         showPersons={this.state.showPersons}
-        persons={this.state.persons}
-        clicked={this.togglePersonsHandler}/>
+        personsLength={this.state.persons.length}
+        clicked={this.togglePersonsHandler}
+        />:null}
 
          {persons}
-       
+         </AuthContext.Provider> 
       </div>
       
     );
